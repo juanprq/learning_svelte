@@ -20,8 +20,16 @@
 
 <Header />
 <main>
-  <Tabs {items} {activeItem} on:tabChange={handleOnTabChange}>
-  </Tabs>
+  <Tabs {items} {activeItem} on:tabChange={handleOnTabChange} />
+  {#if activeItem === 'Current Polls'}
+    <p>
+      Current polls tab...
+    </p>
+  {:else if activeItem === 'Add New Poll'}
+    <p>
+      Add new poll tab...
+    </p>
+  {/if}
 </main>
 <Footer />
 
