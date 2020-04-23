@@ -6,9 +6,41 @@
     answerA: '',
     answerB: '',
   };
+  let errors = {
+    question: '',
+    answerA: '',
+    answerB: '',
+  }
+  let valid = false;
+
 
   const handleSubmit = () => {
-    console.log(fields);
+    valid = true;
+
+    if (fields.question.trim().length < 5) {
+      valid = false;
+      errors.question = 'question must be at least 5 characters.';
+    } else {
+      errors.question = '';
+    }
+
+    if (fields.answerA.trim().length < 1) {
+      valid = false;
+      errors.answerA = 'answer A cannot be empty';
+    } else {
+      errors.answerA = '';
+    }
+
+    if (fields.answerB.trim().length < 1) {
+      valid = false;
+      errors.answerB = 'answer A cannot be empty';
+    } else {
+      errors.answerB = '';
+    }
+
+    if (valid) {
+      console.log('add a new poll', fields);
+    }
   };
 </script>
 <style>
@@ -28,22 +60,30 @@
     margin: 10px auto;
     text-align: left;
   }
+  .error {
+    font-weight: bold;
+    font-size: 12px;
+    color: #d91b42;
+  }
 </style>
 
 <form on:submit|preventDefault={handleSubmit}>
   <div class="form-field">
     <label for="question">Poll Question:</label>
     <input type="text" name="question" bind:value={fields.question} />
+    <div class="error">{errors.question}</div>
   </div>
 
   <div class="form-field">
     <label for="answer-a">Answer A:</label>
     <input type="text" name="answer-a" bind:value={fields.answerA} />
+    <div class="error">{errors.answerA}</div>
   </div>
 
   <div class="form-field">
     <label for="answer-b">Answer B:</label>
     <input type="text" name="answer-b" bind:value={fields.answerB} />
+    <div class="error">{errors.answerB}</div>
   </div>
 
   <Button type="secondary" flat>Add Poll</Button>
