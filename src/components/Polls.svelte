@@ -1,4 +1,6 @@
 <script>
+  import PollDetails from './PollDetails.svelte';
+
   export let data;
 </script>
 <style>
@@ -11,6 +13,6 @@
 
 <div class="poll-list">
   {#each data as poll (poll.id)}
-    <div>{poll.question}</div>
+    <PollDetails {poll} />
   {/each}
 </div>
