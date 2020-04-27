@@ -7,16 +7,6 @@
 
   let items = ['Current Polls', 'Add New Poll'];
   let activeItem = items[0];
-  let polls = [
-    {
-      id: 1,
-      question: 'python or javascript',
-      answerA: 'python',
-      answerB: 'javascript',
-      voteA: 9,
-      voteB: 15,
-    }
-  ];
 
   const handleOnTabChange = (event) => {
     activeItem = event.detail;
@@ -49,7 +39,7 @@
 <main>
   <Tabs {items} {activeItem} on:tabChange={handleOnTabChange} />
   {#if activeItem === 'Current Polls'}
-    <Polls data={polls} on:vote={handleOnVote} />
+    <Polls on:vote={handleOnVote} />
   {:else if activeItem === 'Add New Poll'}
     <CreatePollForm on:add={handleOnAddPoll}/>
   {/if}
