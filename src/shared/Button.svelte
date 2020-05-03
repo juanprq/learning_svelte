@@ -34,6 +34,6 @@
   }
 </style>
 
-<button class={type} class:flat={flat} class:inverse={inverse}>
+<button on:click class={type} class:flat={flat} class:inverse={inverse}>
   <slot></slot>
 </button>
